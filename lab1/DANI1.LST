@@ -1,0 +1,173 @@
+Turbo Assembler	 Version 3.1	    03/22/23 01:19:18	    Page 1
+dani1.asm
+
+
+
+      1
+      2	0000			     .MODEL tiny
+      3	0000			     .data
+      4
+      5	0000  F8		     k db -8
+      6	0001  F6		     db	-10
+      7	0002  FFF6		     dw	-10
+      8	0004  0F		     db	15
+      9	0005  F1		     db	-15
+     10	0006  FE		     db	0feh
+     11	0007  00		     db	0b12h
+**Error** dani1.asm(11)	Value out of range
+     12	0008  66		     db	01100110b
+     13	0009  008B		     dw	10001011b
+     14	000B  000D		     dw	13
+     15	000D  3066		     dw	'0f'
+     16	000F  0245		     dw	0245h
+     17	0011  0005		     dw	0101b
+     18	0013  0A32		     dw	0a32h
+     19	0015  0F45		     dw	0f45h
+     20	0017  0037		     dw	55
+     21	0019  0C47		     dw	0c47h
+     22	001B  00AF		     dw	0afh
+     23	001D  00000004 00000008	  +  dd	4, 8, 0Ah, 0ffh
+     24	      0000000A 000000FF
+     25	002D  FFF1		     dw	-15
+     26	002F  F0		     db	-16
+     27	0030  FFF0		     dw	-16
+     28	0032  7F		     r db 127
+     29	0033  81		     q db -127
+     30	0034  FF81		     t1	dw -127
+     31	0036  80		     db	128
+     32	0037  80		     i db -128
+     33	0038  FF80		     i1	dw -128
+     34	003A  7F		     w db -129
+     35	003B  FF7F		     p dw -129
+     36	003D  FF		     db	255
+     37	003E  01		     db	-255
+     38	003F  00		     db	256
+**Error** dani1.asm(37)	Value out of range
+     39	0040  0100		     dw	256
+     40	0042  8000		     q dw -32768
+**Error** dani1.asm(39)	Symbol already different kind: Q
+     41	0044  FFFFFFFF805A	     rr1 df -32678
+     42	004A  FFFF805A		     zz1 dd -32678
+     43	004E  7FFF		     j dw 32767
+     44	0050  FFF5		     a dw 65525
+     45	0052  000B		     dw	-65525
+     46	0054  FFFF000B		     dd	-65525
+     47	0058  7FFE7960		     dd	-2147583648
+     48	005C  8001869F		     dd	2147583647
+     49	0060  FFFFFFFF7FFE7960	     dq	-2147583648
+     50	0068  000000008001869F	     dq	2147583647
+     51	0070  00A8		     ll	dw 10101000b
+     52	0072  000000000000000C	  +  ff	dq 12, "№", 0b12h
+     53	      0000000000E28496	  +
+     54	      0000000000000B12
+Turbo Assembler	 Version 3.1	    03/22/23 01:19:18	    Page 2
+dani1.asm
+
+
+
+     55	008A  000000000000000C	  +  f1	dq 12, "№", 0b12h
+     56	      0000000000E28496	  +
+     57	      0000000000000B12
+     58	00A2  05		     g5	db 0101b
+     59	00A3  0005		     ss	dw 00000101b
+**Error** dani1.asm(54)	Symbol already different kind: SS
+     60	00A5  000000000000001A	     xx	dq 26
+     61	00AD  0F45 0037	0042	     c1	dw 0f45h, 55, 66
+     62	00B3  8F		     a1	db -113
+     63	00B4  FF8F		     a2	dw -113
+     64	00B6  61		     ii	db -159
+     65	00B7  FF61		     i11 dw -159
+     66	00B9  A7		     s1	db -89
+     67	00BA  FFA7		     ss5 dw -89
+     68	00BC  A4		     s2	db -92
+     69	00BD  FFA4		     ff2 dw -92
+     70	00BF  FF19		     s3	dw -231
+     71	00C1  73 69 67 6D 61	     a11 db "sigma"
+     72	00C6  0000000000000000	     a22 dq e3o1h
+**Error** dani1.asm(67)	Undefined symbol: E3O1H
+     73	00CE  0C		     a33 db 12
+     74	00CF  00C1r		     a55 dw offset a11
+     75	00D1  000D		     a66 dw 13
+     76	00D3  FF85		     gg	dw -123
+     77	00D5  FFF7		     hh	dw -9
+     78				     end
+Turbo Assembler	 Version 3.1	    03/22/23 01:19:18	    Page 3
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "03/22/23"
+??FILENAME			  Text	 "dani1	  "
+??TIME				  Text	 "01:19:18"
+??VERSION			  Number 030A
+@32BIT				  Text	 0
+@CODE				  Text	 DGROUP
+@CODESIZE			  Text	 0
+@CPU				  Text	 0101H
+@CURSEG				  Text	 _DATA
+@DATA				  Text	 DGROUP
+@DATASIZE			  Text	 0
+@FILENAME			  Text	 DANI1
+@INTERFACE			  Text	 00H
+@MODEL				  Text	 1
+@STACK				  Text	 DGROUP
+@WORDSIZE			  Text	 2
+A				  Word	 DGROUP:0050
+A1				  Byte	 DGROUP:00B3
+A11				  Byte	 DGROUP:00C1
+A2				  Word	 DGROUP:00B4
+A22				  Qword	 DGROUP:00C6
+A33				  Byte	 DGROUP:00CE
+A55				  Word	 DGROUP:00CF
+A66				  Word	 DGROUP:00D1
+C1				  Word	 DGROUP:00AD
+F1				  Qword	 DGROUP:008A
+FF				  Qword	 DGROUP:0072
+FF2				  Word	 DGROUP:00BD
+G5				  Byte	 DGROUP:00A2
+GG				  Word	 DGROUP:00D3
+HH				  Word	 DGROUP:00D5
+I				  Byte	 DGROUP:0037
+I1				  Word	 DGROUP:0038
+I11				  Word	 DGROUP:00B7
+II				  Byte	 DGROUP:00B6
+J				  Word	 DGROUP:004E
+K				  Byte	 DGROUP:0000
+LL				  Word	 DGROUP:0070
+P				  Word	 DGROUP:003B
+Q				  Byte	 DGROUP:0033
+R				  Byte	 DGROUP:0032
+RR1				  Pword	 DGROUP:0044
+S1				  Byte	 DGROUP:00B9
+S2				  Byte	 DGROUP:00BC
+S3				  Word	 DGROUP:00BF
+SS5				  Word	 DGROUP:00BA
+T1				  Word	 DGROUP:0034
+W				  Byte	 DGROUP:003A
+XX				  Qword	 DGROUP:00A5
+ZZ1				  Dword	 DGROUP:004A
+Turbo Assembler	 Version 3.1	    03/22/23 01:19:18	    Page 4
+Symbol Table
+
+
+
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+DGROUP				  Group
+  _DATA				  16  00D7 Word	  Public  DATA
+  _TEXT				  16  0000 Word	  Public  CODE
+Turbo Assembler	 Version 3.1	    03/22/23 01:19:18	    Page 5
+Error Summary
+
+
+
+**Error** dani1.asm(11)	Value out of range
+**Error** dani1.asm(37)	Value out of range
+**Error** dani1.asm(39)	Symbol already different kind: Q
+**Error** dani1.asm(54)	Symbol already different kind: SS
+**Error** dani1.asm(67)	Undefined symbol: E3O1H
+
