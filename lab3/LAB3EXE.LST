@@ -1,0 +1,69 @@
+Turbo Assembler	 Version 3.1	    03/30/23 22:22:52	    Page 1
+lab3exe.asm
+
+
+
+      1				     ; hello-l.asm
+      2
+      3				     ; Виводить	на екран	повідомлення "'Hello World!" і		    +
+      4				     завершується
+      5	0000			     .model small ; модель пам’яті, яка використовується для    +
+      6				     EXE- файлів
+      7
+      8	0000			     .stack 100h ; сегмент стеку розміром 256 байт ; У	сегменті    +
+      9				     даних
+     10
+     11	0000			     .data
+     12	0000  48 65 6C 6C 6F 20	57+  message db	"Hello World!",0Dh,0Ah,"$" ; рядок	для виведення тексту та +
+     13	      6F 72 6C 64 21 0D	0A+  символи управління
+     14	      24
+     15
+     16				     ; У сегменті команд
+     17	000F			     .code    ;	початок сегменту	кода
+     18	0000			     start:
+     19	0000  B8 0000s		       mov ax, @data
+     20	0003  8E D8		       mov ds, ax
+     21	0005  B4 09		       mov ah, 09h ; номер	функції DOS: виведення на екран - в АН    +
+     22				     записується код функції
+     23	0007  BA 0000r		       mov dx,offset message ; зсув	до змінної у сегменті	даних	    +
+     24				     пишемо в DX
+     25	000A  CD 21		       int 21h ; виклик системної функції	DOS: вивести рядок на +
+     26				     екран
+     27	000C  B8 4C00		       mov  ax,	4c00h  ; код	успішного завершення	програми та	    +
+     28				     вивантаження її з пам’яті
+     29	000F  CD 21		       int 21h
+     30				     end start ; кінець програми
+Turbo Assembler	 Version 3.1	    03/30/23 22:22:52	    Page 2
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "03/30/23"
+??FILENAME			  Text	 "lab3exe "
+??TIME				  Text	 "22:22:52"
+??VERSION			  Number 030A
+@32BIT				  Text	 0
+@CODE				  Text	 _TEXT
+@CODESIZE			  Text	 0
+@CPU				  Text	 0101H
+@CURSEG				  Text	 _TEXT
+@DATA				  Text	 DGROUP
+@DATASIZE			  Text	 0
+@FILENAME			  Text	 LAB3EXE
+@INTERFACE			  Text	 00H
+@MODEL				  Text	 2
+@STACK				  Text	 DGROUP
+@WORDSIZE			  Text	 2
+MESSAGE				  Byte	 DGROUP:0000
+START				  Near	 _TEXT:0000
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+DGROUP				  Group
+  STACK				  16  0100 Para	  Stack	  STACK
+  _DATA				  16  000F Word	  Public  DATA
+_TEXT				  16  0011 Word	  Public  CODE
+
