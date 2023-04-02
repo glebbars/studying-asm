@@ -1,0 +1,82 @@
+Turbo Assembler	 Version 3.1	    04/02/23 19:50:28	    Page 1
+lab5.asm
+
+
+
+      1				     ; Лабораторна робота 3. «Системне програмування» ;	    +
+      2				     Виконав: Барський Гліб Ігорович., гр.	ТР-з21, дата:	    +
+      3				     30.03.2023
+      4				     ; Команди пересилання
+      5				     ; Заповнення поля String умістом Simvol
+      6	0000			     Datas segment
+      7	0000  61 73 73 65 6D 62	6C+	  Simvol db "assembler"
+      8	      65 72
+      9	0009  61 62 72 73 65 6C	73+	  String db "abrselsem $"
+     10	      65 6D 20 24
+     11	0014  24			  Strend db "$"
+     12					  ;0Dh – символ	повернення каретки
+     13					  ;0Ah - символ переведення рядка
+     14	0015  0D 0A 24			  CR_LF	db 0dh,0ah, '$'
+     15	0018			     Datas ends
+     16	0000			     Codes segment
+     17				     Assume cs:Codes,ds:Datas
+     18	0000			     First:
+     19	0000  B8 0000s			  mov ax, Datas
+     20	0003  8E D8			  mov ds, ax
+     21	0005  B4 40			  mov ah, 40h	       ; Підготовка  і
+     22	0007  BB 0001			  mov bx, 1	       ; виведення
+     23	000A  B9 0009			  mov cx, 9	       ; вихідного рядка String
+     24	000D  BA 0009r			  lea dx, String       ; засобами DOS
+     25	0010  CD 21			  int 21h
+     26	0012  B4 09			  mov ah, 9h	       ; Виведення на екран
+     27	0014  BA 0015r			  mov dx, offset CR_LF ; переведення	курсора на
+     28	0017  CD 21			  int 21h	       ; наступний рядок
+     29	0019  A0 0001r			  mov al, Simvol+1     ; Розміщення символу s
+     30	001C  A2 000Ar			  mov String+1,	al     ; у позиції
+     31	001F  A2 000Br			  mov String+2,	al     ; рядка
+     32	0022  A0 0003r			  mov al, Simvol+3     ; Розміщення символу e
+     33	0025  A2 000Cr			  mov String+3,	al     ; у позиції рядка
+     34	0028  A0 0004r			  mov al, Simvol+4     ; Розміщення символу m
+     35	002B  A2 000Dr			  mov String+4,	al     ; у позиції рядка
+     36	002E  A0 0005r			  mov al, Simvol+5     ; Розміщення символу b
+     37	0031  A2 000Er			  mov String+5,	al     ; у позиції рядка
+     38	0034  A0 0006r			  mov al, Simvol+6     ; Розміщення символу l
+     39	0037  A2 000Fr			  mov String+6,	al     ; у позиції рядка
+     40	003A  A0 0008r			  mov al, Simvol+8     ; Розміщення символу r
+     41	003D  A2 0011r			  mov String+8,	al     ; у позиції рядка
+     42	0040  B4 40			  mov ah, 40h	       ; Підготовка
+     43	0042  BB 0001			  mov bx, 1	       ; і виведення
+     44	0045  B9 0009			  mov cx, 9	       ; результуючого рядка
+     45	0048  BA 0009r			  lea dx, String       ; засобами DOS
+     46	004B  CD 21			  int 21h
+     47	004D  B4 4C			  mov ah, 4ch	       ; Повернення
+     48	004F  CD 21			  int	21h	       ; у середовище DOS
+     49	0051			     Codes ends
+     50					  end First
+Turbo Assembler	 Version 3.1	    04/02/23 19:50:28	    Page 2
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "04/02/23"
+??FILENAME			  Text	 "lab5	  "
+??TIME				  Text	 "19:50:28"
+??VERSION			  Number 030A
+@CPU				  Text	 0101H
+@CURSEG				  Text	 CODES
+@FILENAME			  Text	 LAB5
+@WORDSIZE			  Text	 2
+CR_LF				  Byte	 DATAS:0015
+FIRST				  Near	 CODES:0000
+SIMVOL				  Byte	 DATAS:0000
+STREND				  Byte	 DATAS:0014
+STRING				  Byte	 DATAS:0009
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+CODES				  16  0051 Para	  none
+DATAS				  16  0018 Para	  none
+
